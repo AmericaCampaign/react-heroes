@@ -28,6 +28,33 @@ Router.route('/api/villains')
     })
   })
 
+Router.route('/api/villains/:villainId/comments')
+  .post((req, res) => {
+    const {text} = req.body
+    const newComment = {text}
+
+    Comment(newComment).save((err, savedComment) => {
+      if (err) {
+        res.json({ error: err })
+      } else {
+        Villain.findById({_id: req.params.villainId}, (err, villain) => {
+          if (err) {
+            res.json({ error: err })
+          } else {
+            villain.comments.push(savedComment._id)
+            villain.save((err, updatedVillain) => {
+              if (err) {
+                res.json({ error: err })
+              } else {
+                res.json({ msg: 'SUCCESS', data: updatedVillain })
+              }
+            })
+          }
+        })
+      }
+    })
+  })
+
 Router.route('/api/villains/:villainId')
   .delete((req, res) => {
     const villainId = req.params.villainId
