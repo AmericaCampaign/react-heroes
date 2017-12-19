@@ -29,7 +29,7 @@ const styles = {
   }
 }
 
-const CreateVillainForm = ({ onNameChange, onImageChange, onUniverseChange, onNemesisChange, submitVillain }) => {
+const CreateVillainForm = ({ onNameChange, onImageChange, onUniverseChange, onNemesisChange, submitVillain, heroes }) => {
   return (
     <div style={styles.container}>
       <form>
@@ -45,9 +45,13 @@ const CreateVillainForm = ({ onNameChange, onImageChange, onUniverseChange, onNe
           <label style={styles.titles}>Universe: </label>
           <input style={styles.input} type='text' placeholder='Type Universe Here' onChange={onUniverseChange} />
         </div>
-        <div style={styles.section}>
-          <label style={styles.titles}>Nemesis: </label>
-          <input style={styles.input} type='text' placeholder='Type Nemesis Here' onChange={onNemesisChange} />
+        <div>
+          <label>Nemesis: </label>
+          <select onChange={onNemesisChange}>
+            {
+              heroes.map(hero => <option value={hero._id}> {hero.name} </option>)
+            }
+          </select>
         </div>
         <button style={styles.button} onClick={submitVillain}> SUBMIT </button>
       </form>

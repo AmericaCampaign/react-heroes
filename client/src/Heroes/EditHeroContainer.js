@@ -54,7 +54,7 @@ class EditHeroContainer extends Component {
       method: 'GET'
     }).done((response) => {
       const {name, img, superPower, universe, nemesis} = response.hero
-      this.setState({ 
+      this.setState({
         name,
         img,
         superPower,
@@ -71,20 +71,21 @@ class EditHeroContainer extends Component {
       <div>
         {
           !this.state.loading
-          ? <EditHeroForm
-            name={name}
-            img={img}
-            superPower={superPower}
-            universe={universe}
-            nemesis={nemesis}
-            onNameChange={this.onNameChange}
-            onImageChange={this.onImageChange}
-            onSuperPowerChange={this.onSuperPowerChange}
-            onUniverseChange={this.onUniverseChange}
-            onNemesisChange={this.onNemesisChange}
-            submitHeroToServer={this.submitHeroToServer}
+            ? <EditHeroForm
+              name={name}
+              img={img}
+              superPower={superPower}
+              universe={universe}
+              nemesis={nemesis}
+              onNameChange={this.onNameChange}
+              onImageChange={this.onImageChange}
+              onSuperPowerChange={this.onSuperPowerChange}
+              onUniverseChange={this.onUniverseChange}
+              onNemesisChange={this.onNemesisChange}
+              submitHeroToServer={this.submitHeroToServer}
+              villains={this.props.villains}
             />
-          : <h1>Loading...</h1>
+            : <h1>Loading...</h1>
         }
       </div>
     )

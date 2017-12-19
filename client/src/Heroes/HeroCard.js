@@ -10,13 +10,13 @@ const styles = {
     marginRight: '2%',
     marginBottom: '2%',
     paddingBottom: '1%',
-    backgroundColor: '#34495e',
+    backgroundColor: '#34495e'
   },
   topSection: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'flex-start',
+    justifyContent: 'flex-start'
   },
   image: {
     width: '80%'
@@ -73,7 +73,7 @@ const styles = {
   },
   link: {
     textDecoration: 'none',
-    color: '#ecf0f1',
+    color: '#ecf0f1'
   }
 }
 
@@ -87,13 +87,13 @@ const HeroCard = ({ hero, deleteHero, showUniqueHero }) => {
       </div>
 
       <div style={styles.buttonSection}>
-      <button style={styles.button} onClick={() => showUniqueHero(hero)}> MORE INFO </button>
-      <button style={styles.button} onClick={() => deleteHero(hero)}> DELETE </button>
+        <button style={styles.button} onClick={() => showUniqueHero(hero)}> MORE INFO </button>
+        <button style={styles.button} onClick={() => deleteHero(hero)}> DELETE </button>
       </div>
 
       <div style={styles.linkSection}>
-      <Link style={styles.link} to={`/hero/${hero._id}`}>View Info</Link>
-      <Link style={styles.link} to={`/edit-hero/${hero._id}`}>Edit Hero</Link>
+        <Link style={styles.link} to={`/hero/${hero._id}`}>View Info</Link>
+        <Link style={styles.link} to={`/edit-hero/${hero._id}`}>Edit Hero</Link>
       </div>
 
       <div style={styles.bottomSection}>
@@ -102,7 +102,7 @@ const HeroCard = ({ hero, deleteHero, showUniqueHero }) => {
         <p style={styles.titles}>Universe:</p>
         <p style={styles.traits}>{hero.universe}</p>
         <p style={styles.titles}>Nemesis:</p>
-        <p style={styles.traits}>{hero.nemesis}</p>
+        <p style={styles.traits}>{hero.nemesis ? hero.nemesis.name : 'No Nemesis Yet'}</p>
       </div>
     </div>
   )

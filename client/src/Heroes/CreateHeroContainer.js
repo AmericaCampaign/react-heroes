@@ -67,7 +67,7 @@ class CreateHeroContainer extends Component {
     })
   }
 
-  render() {
+  render () {
     return (
       <div>
         <div style={styles.container}>
@@ -75,14 +75,15 @@ class CreateHeroContainer extends Component {
           <h4 style={styles.subHeader}>Add a new hero to the list.</h4>
         </div>
         <div style={styles.formSection}>
-        <CreateHeroForm 
-          onNameChange={this.onNameChange}
-          onSuperPowerChange={this.onSuperPowerChange}
-          onImageChange={this.onImageChange}
-          onUniverseChange={this.onUniverseChange}
-          onNemesisChange={this.onNemesisChange}
-          handleSubmit={this.handleSubmit}
-        />
+          <CreateHeroForm
+            villains={this.props.villains}
+            onNameChange={this.onNameChange}
+            onSuperPowerChange={this.onSuperPowerChange}
+            onImageChange={this.onImageChange}
+            onUniverseChange={this.onUniverseChange}
+            onNemesisChange={this.onNemesisChange}
+            handleSubmit={this.handleSubmit}
+          />
         </div>
       </div>
     )

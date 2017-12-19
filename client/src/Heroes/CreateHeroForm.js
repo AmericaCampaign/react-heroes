@@ -29,7 +29,7 @@ const styles = {
   }
 }
 
-const CreateHeroForm = ({ onNameChange, onSuperPowerChange, onImageChange, onUniverseChange, onNemesisChange, handleSubmit }) => {
+const CreateHeroForm = ({ onNameChange, onSuperPowerChange, onImageChange, onUniverseChange, onNemesisChange, handleSubmit, villains }) => {
   return (
     <div style={styles.container}>
       <form>
@@ -51,7 +51,11 @@ const CreateHeroForm = ({ onNameChange, onSuperPowerChange, onImageChange, onUni
         </div>
         <div style={styles.section}>
           <label style={styles.titles}>Nemesis: </label>
-          <input style={styles.input} type='text' placeholder='Type Nemesis Here' onChange={onNemesisChange} />
+          <select onChange={onNemesisChange}>
+            {
+              villains.map(vil => <option value={vil._id}> {vil.name} </option>)
+            }
+          </select>
         </div>
         <button style={styles.button} onClick={handleSubmit}> SUBMIT </button>
       </form>

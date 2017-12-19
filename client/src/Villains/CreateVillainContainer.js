@@ -54,7 +54,7 @@ class CreateVillainContainer extends Component {
     e.preventDefault()
     const {name, img, universe, nemesis} = this.state
     const villain = {name, img, universe, nemesis}
-    $.ajax({ 
+    $.ajax({
       url: '/api/villains',
       method: 'POST',
       data: villain
@@ -72,13 +72,14 @@ class CreateVillainContainer extends Component {
           <h4 style={styles.subHeader}>Add a new villain to the list.</h4>
         </div>
         <div style={styles.formSection}>
-        <CreateVillainForm
-          onNameChange={this.onNameChange}
-          onImageChange={this.onImageChange}
-          onUniverseChange={this.onUniverseChange}
-          onNemesisChange={this.onNemesisChange}
-          submitVillain={this.submitVillain}
-        />
+          <CreateVillainForm
+            onNameChange={this.onNameChange}
+            onImageChange={this.onImageChange}
+            onUniverseChange={this.onUniverseChange}
+            onNemesisChange={this.onNemesisChange}
+            submitVillain={this.submitVillain}
+            heroes={this.props.heroes}
+          />
         </div>
       </div>
     )
@@ -86,4 +87,3 @@ class CreateVillainContainer extends Component {
 }
 
 export default withRouter(CreateVillainContainer)
-

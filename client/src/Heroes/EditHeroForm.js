@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const EditHeroForm = ({ name, img, superPower, universe, nemesis, onNameChange, onImageChange, onSuperPowerChange, onUniverseChange, onNemesisChange, submitHeroToServer }) => {
+const EditHeroForm = ({ name, img, superPower, universe, nemesis, onNameChange, onImageChange, onSuperPowerChange, onUniverseChange, onNemesisChange, submitHeroToServer, villains }) => {
   return (
     <form>
       <div>
@@ -21,8 +21,12 @@ const EditHeroForm = ({ name, img, superPower, universe, nemesis, onNameChange, 
         <input value={universe} onChange={onUniverseChange} />
       </div>
       <div>
-        <label>Nemesis:</label>
-        <input value={nemesis} onChange={onNemesisChange} />
+        <label>Nemesis: </label>
+        <select onChange={onNemesisChange}>
+          {
+            villains.map(vil => <option value={vil._id}> {vil.name} </option>)
+          }
+        </select>
       </div>
       <button onClick={submitHeroToServer}>SUBMIT</button>
     </form>

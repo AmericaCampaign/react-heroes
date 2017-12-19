@@ -23,11 +23,11 @@ class EditVillainContainer extends Component {
   }
 
   onNameChange = (e) => this.setState({ name: e.target.value })
-  
+
   onImageChange = (e) => this.setState({ img: e.target.value })
-  
+
   onUniverseChange = (e) => this.setState({ universe: e.target.value })
-  
+
   onNemesisChange = (e) => this.setState({ nemesis: e.target.value })
 
   loadVillainFromServer = (villain) => {
@@ -67,18 +67,19 @@ class EditVillainContainer extends Component {
       <div>
         {
           !this.state.loading
-          ? <EditVillainForm
-            name={name}
-            img={img}
-            universe={universe}
-            nemesis={nemesis}
-            onNameChange={this.onNameChange}
-            onImageChange={this.onImageChange}
-            onUniverseChange={this.onUniverseChange}
-            onNemesisChange={this.onNemesisChange}
-            submitVillainToServer={this.submitVillainToServer}
+            ? <EditVillainForm
+              name={name}
+              img={img}
+              universe={universe}
+              nemesis={nemesis}
+              onNameChange={this.onNameChange}
+              onImageChange={this.onImageChange}
+              onUniverseChange={this.onUniverseChange}
+              onNemesisChange={this.onNemesisChange}
+              submitVillainToServer={this.submitVillainToServer}
+              heroes={this.props.heroes}
             />
-          : <h1>Loading...</h1>
+            : <h1>Loading...</h1>
         }
       </div>
     )

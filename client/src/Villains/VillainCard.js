@@ -10,13 +10,13 @@ const styles = {
     marginRight: '2%',
     marginBottom: '2%',
     paddingBottom: '1%',
-    backgroundColor: '#34495e',
+    backgroundColor: '#34495e'
   },
   topSection: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'flex-start',
+    justifyContent: 'flex-start'
   },
   image: {
     width: '80%'
@@ -73,7 +73,7 @@ const styles = {
   },
   link: {
     textDecoration: 'none',
-    color: '#ecf0f1',
+    color: '#ecf0f1'
   }
 }
 
@@ -95,12 +95,12 @@ const VillainCard = ({ villain, deleteVillain, showUniqueVillain }) => {
         <Link style={styles.link} to={`/villain/${villain._id}`}>View Info</Link>
         <Link style={styles.link} to={`/edit-villain/${villain._id}`}>Edit Villain</Link>
       </div>
-      
+
       <div style={styles.bottomSection}>
         <p style={styles.titles}>Universe:</p>
         <p style={styles.traits}>{villain.universe}</p>
         <p style={styles.titles}>Nemesis:</p>
-        <p style={styles.traits}>{villain.nemesis}</p>
+        <p style={styles.traits}>{villain.nemesis ? villain.nemesis.name : 'No Nemesis Yet'}</p>
       </div>
     </div>
   )
