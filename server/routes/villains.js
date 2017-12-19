@@ -4,13 +4,15 @@ const Villain = require('../models/Villain')
 
 Router.route('/api/villains')
   .get((req, res) => {
-    Villain.find((err, villains) => {
-      if (err) {
-        res.json({ error: err })
-      } else {
-        res.json({ msg: 'SUCCESS', villains })
-      }
-    })
+    Villain.find()
+      .populate('nemesis')
+      .exec((err, villains) => {
+        if (err) {
+          res.json({ error: err })
+        } else {
+          res.json({ msg: 'SUCCESS', villains })
+        }
+      })
   })
 
 Router.route('/api/villains')
@@ -22,7 +24,7 @@ Router.route('/api/villains')
         res.json({ error: err })
       } else {
         res.json({ msg: 'SUCCESS', data: savedVillian })
-      } 
+      }
     })
   })
 
@@ -41,13 +43,15 @@ Router.route('/api/villains/:villainId')
 Router.route('/api/villains/:villainId')
   .get((req, res) => {
     const villainId = req.params.villainId
-    Villain.findById({_id: villainId}, (err, villain) => {
-      if (err) {
-        res.json({ error: err})
-      } else {
-        res.json({ msg: `Found: ${villainId}`, villain })
-      }
-    })
+    Villain.findById({_id: villainId})
+      .populate('nemesis')
+      .exec((err, villain) => {
+        if (err) {
+          res.json({ error: err })
+        } else {
+          res.json({ msg: `Found: ${villain.name}`, villain })
+        }
+      })
   })
 
 Router.route('/api/villains/:villainId')
@@ -59,7 +63,7 @@ Router.route('/api/villains/:villainId')
         res.json({ error: err })
       } else {
         villain.name = req.body.name ? req.body.name : villain.name
-        villain.img  = req.body.img ? req.body.img : villain.img
+        villain.img = req.body.img ? req.body.img : villain.img
         villain.universe = req.body.universe ? req.body.universe : villain.universe
         villain.nemesis = req.body.nemesis ? req.body.nemesis : villain.nemesis
         villain.save((err, updatedVillain) => {
